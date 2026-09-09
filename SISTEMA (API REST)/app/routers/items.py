@@ -9,7 +9,7 @@ from ..database import get_session
 router = APIRouter(prefix="/items", tags=["items"])
 
 
-@router.get("/", response_model=List[schemas.ItemRead])
+@router.get("", response_model=List[schemas.ItemRead])
 def read_items(
     category: Optional[str] = Query(None, description="Filtra itens por categoria"),
     skip: int = Query(0, ge=0),
@@ -29,7 +29,7 @@ def read_item(item_id: int, session: Session = Depends(get_session)):
     return item
 
 
-@router.post("/", response_model=schemas.ItemRead, status_code=201)
+@router.post("", response_model=schemas.ItemRead, status_code=201)
 def create_item(item_in: schemas.ItemCreate, session: Session = Depends(get_session)):
     """Cria um novo item. Se image_url não for enviado, uma imagem genérica é gerada."""
     return crud.create_item(session, item_in)
