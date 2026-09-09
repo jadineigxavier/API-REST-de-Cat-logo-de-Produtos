@@ -114,4 +114,6 @@ curl -X POST http://127.0.0.1:8000/items \
 
 ## Licença
 
+Criado por Jadinei G Xavier
+
 MIT — sinta-se livre para usar este projeto como base para o seu próprio portfólio.
