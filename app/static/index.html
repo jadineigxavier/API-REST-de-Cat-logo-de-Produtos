@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Catalog API — Software de Catálogo</title>
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <h1>Catalog<span>Software</span></h1>
+    </div>
+    <button id="btn-new" class="btn-primary">+ Novo item</button>
+  </header>
+
+  <main>
+    <div class="toolbar">
+      <select id="filter-category">
+        <option value="">Todas as categorias</option>
+      </select>
+      <span id="item-count" class="item-count"></span>
+    </div>
+
+    <div id="grid" class="grid"></div>
+    <p id="empty-state" class="empty-state" hidden>Nenhum item encontrado. Clique em "Novo item" para cadastrar o primeiro.</p>
+  </main>
+
+  <div id="modal-backdrop" class="modal-backdrop" hidden>
+    <div class="modal">
+      <h2 id="modal-title">Novo item</h2>
+      <form id="item-form">
+        <input type="hidden" id="item-id" />
+        <label>Nome
+          <input type="text" id="field-name" required maxlength="120" />
+        </label>
+        <label>Categoria
+          <input type="text" id="field-category" required maxlength="60" />
+        </label>
+        <div class="row">
+          <label>Preço (R$)
+            <input type="number" id="field-price" step="0.01" min="0.01" required />
+          </label>
+          <label>Estoque
+            <input type="number" id="field-stock" min="0" step="1" required />
+          </label>
+        </div>
+        <label>Descrição
+          <textarea id="field-description" maxlength="500" rows="3"></textarea>
+        </label>
+        <label>URL da imagem (opcional)
+          <input type="url" id="field-image" placeholder="Deixe em branco para gerar uma imagem genérica" />
+        </label>
+        <div class="modal-actions">
+          <button type="button" id="btn-cancel" class="btn-secondary">Cancelar</button>
+          <button type="submit" class="btn-primary">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
